@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Multi-Hub Desktop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-light">
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="brand">
+      <span class="logo">⚡ AI Multi-Hub</span>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="chatgpt">
+        <span class="tab-icon">🟢</span> ChatGPT
+      </button>
+      <button class="tab-btn" data-tab="gemini">
+        <span class="tab-icon">🔵</span> Gemini
+      </button>
+      <button class="tab-btn" data-tab="deepseek">
+        <span class="tab-icon">🟦</span> DeepSeek
+      </button>
+      <button class="tab-btn split-toggle-btn" id="btn-split-toggle">
+        <span class="tab-icon">🔲</span> Split View
+      </button>
+    </nav>
+
+    <!-- Global Controls -->
+    <div class="global-controls">
+      <button id="btn-global-back" title="Global Back" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button id="btn-global-forward" title="Global Forward" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <button id="btn-global-reload" title="Global Reload All" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Webview Container -->
+  <main id="app-container" class="view-single">
+    <!-- ChatGPT Column/Pane -->
+    <div class="webview-pane" id="pane-chatgpt" data-service="chatgpt">
+      <div class="pane-header">
+        <span class="pane-title">ChatGPT</span>
+        <div class="pane-actions">
+          <button class="pane-btn btn-pane-back" title="Back" data-target="webview-chatgpt">◀</button>
+          <button class="pane-btn btn-pane-forward" title="Forward" data-target="webview-chatgpt">▶</button>
+          <button class="pane-btn btn-pane-reload" title="Reload" data-target="webview-chatgpt">↻</button>
+        </div>
+      </div>
+      <webview
+        id="webview-chatgpt"
+        src="https://chatgpt.com/"
+        partition="persist:chatgpt_session"
+        useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        allowpopups>
+      </webview>
+    </div>
+
+    <!-- Gemini Column/Pane -->
+    <div class="webview-pane" id="pane-gemini" data-service="gemini">
+      <div class="pane-header">
+        <span class="pane-title">Google Gemini</span>
+        <div class="pane-actions">
+          <button class="pane-btn btn-pane-back" title="Back" data-target="webview-gemini">◀</button>
+          <button class="pane-btn btn-pane-forward" title="Forward" data-target="webview-gemini">▶</button>
+          <button class="pane-btn btn-pane-reload" title="Reload" data-target="webview-gemini">↻</button>
+        </div>
+      </div>
+      <webview
+        id="webview-gemini"
+        src="https://gemini.google.com/"
+        partition="persist:gemini_session"
+        useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        allowpopups>
+      </webview>
+    </div>
+
+    <!-- DeepSeek Column/Pane -->
+    <div class="webview-pane" id="pane-deepseek" data-service="deepseek">
+      <div class="pane-header">
+        <span class="pane-title">DeepSeek</span>
+        <div class="pane-actions">
+          <button class="pane-btn btn-pane-back" title="Back" data-target="webview-deepseek">◀</button>
+          <button class="pane-btn btn-pane-forward" title="Forward" data-target="webview-deepseek">▶</button>
+          <button class="pane-btn btn-pane-reload" title="Reload" data-target="webview-deepseek">↻</button>
+        </div>
+      </div>
+      <webview
+        id="webview-deepseek"
+        src="https://chat.deepseek.com/"
+        partition="persist:deepseek_session"
+        useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        allowpopups>
+      </webview>
+    </div>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
